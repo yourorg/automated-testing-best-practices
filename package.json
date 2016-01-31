@@ -3,14 +3,19 @@
   "scripts": {
     "install": "cd .scripts && npm install",
     "start": ".scripts/start.js",
-    "test": ".scripts/test.js"
+    "test": ".scripts/test.js",
+    "test-unit": "jest",
+    "test-unit-watch": "jest --watch --watchExtensions js,jsx"
   },
   "jest": {
+    "setupEnvScriptFile": "<rootDir>/.scripts/setup-jest-env.js",
     "testRunner": "<rootDir>/node_modules/jest-cli/src/testRunners/jasmine/jasmine2.js",
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testPathDirs": ["<rootDir>/src/imports", "<rootDir>/__mocks__"],
+    "testDirectoryName": "src/imports",
     "testFileExtensions": [
-      "js",
-      "jsx"
+      "tests.js",
+      "tests.jsx"
     ],
     "moduleFileExtensions": [
       "js",

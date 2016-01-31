@@ -1,13 +1,12 @@
-var babel = require('babel-core');
-var path = require('path');
-var fs = require('fs');
-
 module.exports = function (wallaby) {
-  var babelCompiler = wallaby.compilers.babel({
-    babel: babel,
-    presets: ['react', 'es2015', 'stage-0'],
-    plugins: ['transform-decorators-legacy']
-  });
+  var path = require('path');
+  var fs = require('fs');
+  var babel = require('babel-core');
+  var babelConfig = JSON.parse(
+    fs.readFileSync(path.join(__dirname, '.babelrc'))
+  );
+  babelConfig.babel = babel;
+  var babelCompiler = wallaby.compilers.babel(babelConfig);
 
   process.env.NODE_PATH += path.delimiter +
     path.join(wallaby.localProjectDir, 'node_modules');
@@ -38,14 +37,14 @@ module.exports = function (wallaby) {
 
   return {
     files: [
-      {pattern: 'src/imports/**/*-spec.@(js|jsx)', ignore: true},
-      {pattern: 'src/imports/**/*.@(js|jsx)', load: false},
+      {pattern: 'src/imports/**/*.tests.@(js|jsx)', ignore: true},
+      {pattern: 'src/imports/**/*.tests.@(js|jsx)', load: false},
       {pattern: '__mocks__/*.js'},
     ],
 
     tests: [
-      {pattern: 'src/imports/**/*-spec.@(js|jsx)'},
-      {pattern: 'tests/jasmine/server/unit/**/*-spec.@(js|jsx)'},
+      {pattern: 'src/imports/**/*.tests.@(js|jsx)'},
+      {pattern: 'tests/jasmine/server/unit/**/*.tests.@(js|jsx)'},
       {pattern: 'tests/jasmine/server/unit/quarantine/**/*.@(js|jsx)', ignore: true},
     ],
 
