@@ -37,8 +37,8 @@ module.exports = function (wallaby) {
 
   return {
     files: [
+      {pattern: 'src/imports/**/*.@(js|jsx)', load: false},
       {pattern: 'src/imports/**/*.tests.@(js|jsx)', ignore: true},
-      {pattern: 'src/imports/**/*.tests.@(js|jsx)', load: false},
       {pattern: '__mocks__/*.js'},
     ],
 
@@ -66,6 +66,7 @@ module.exports = function (wallaby) {
       var packageConfigPath = path.resolve(wallaby.localProjectDir, 'package.json');
       var packageConfig = require(packageConfigPath);
       var jestConfig = packageConfig.jest;
+      delete jestConfig.setupEnvScriptFile;
       delete jestConfig.scriptPreprocessor;
       wallaby.testFramework.configure(jestConfig);
     },
