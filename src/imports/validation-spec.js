@@ -1,4 +1,7 @@
-import {validate, throwMeteorError} from './validation';
+import _ from 'underscore';
+jest.dontMock('./validation');
+const {validate, throwMeteorError} = require('./validation');
+import Meteor from 'meteor';
 
 describe('validate', function () {
   describe('when no validators return an error', function () {

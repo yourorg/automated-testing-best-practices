@@ -1,3 +1,6 @@
+import _ from 'underscore';
+import Meteor from 'meteor';
+
 export function validate(validators, data) {
   return _.reduce(validators, (errors, validator) => {
     const error = validator(data);

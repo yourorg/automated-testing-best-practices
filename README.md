@@ -81,13 +81,15 @@ Please remember to **read everything** on our [testing success factors](./conten
    cd automated-testing-best-practices
    npm install
    ```
+   
+2. Install Node.js 4.x! This does not work with Node.js 5.x or Node.js 0.x.   
 
-2. Start the unit testing runner by either starting Wallaby from your IDE (highly recommended! See above), or you can start Karma with:
+3. Start the unit testing runner by either starting Wallaby from your IDE (highly recommended! See above), or you can start Karma with:
    ```
    node_modules/.bin/karma start
    ```
    
-3. Start Chimp + Meteor without Mirror<br/>
+4. Start Chimp + Meteor without Mirror<br/>
    ```
    npm start
    ```
@@ -96,7 +98,7 @@ Please remember to **read everything** on our [testing success factors](./conten
    WITH_MIRROR=1 npm start
    ```
    
-4. Test and Develop!
+5. Test and Develop!
 
 If you'd like to run a full build locally, exit the scripts above and type:
 
