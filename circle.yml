@@ -31,10 +31,10 @@ dependencies:
 
     # Cache Meteor
     - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
-    - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
+    - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh 2>&1 | cat; fi
 
     # Cache npm deps
-    - npm install
+    - npm install --nospin
 
     # Cache the build and dependencies
     - .scripts/cache-build-and-dependencies.js:
@@ -46,7 +46,7 @@ dependencies:
         pwd: .scripts
 
     # Cache Karma dependencies
-    - ./node_modules/.bin/karma start karma.conf.js
+    # - ./node_modules/.bin/karma start karma.conf.js
 
 test:
   pre:
