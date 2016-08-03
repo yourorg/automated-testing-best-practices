@@ -12,10 +12,10 @@ if (features.length > 0) {
   chimpScript = chimpScript + ' ' + features.join(" ");
 }
 
-// runTestsSequentially();
-runEndToEndTests(function () {
-  console.log('Yay!');
-});
+runTestsSequentially();
+// runEndToEndTests(function () {
+//   console.log('Yay!');
+// });
 
 
 // TODO run tests in parallel for beefier machines
